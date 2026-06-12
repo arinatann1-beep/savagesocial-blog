@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carousel — A week of Instagram content in 30 minutes | Savage Social</title>
+  <meta name="description" content="Instagram carousel: use Claude AI to create a full week of Instagram content in 30 minutes. One idea per slide, by Savage Social." />
+
+  <!-- Readable modern font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #14141d;
+      --surface2: #1c1c28;
+      --border: #2a2a38;
+      --accent: #c8ff00;
+      --text: #f4f4f8;
+      --muted: #9a9ab0;
+      --ink: #0a0a0f;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(900px 600px at 80% -10%, rgba(200,255,0,0.08), transparent 60%),
+        radial-gradient(700px 500px at -10% 110%, rgba(77,159,255,0.07), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .stage {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 28px 18px 36px;
+    }
+
+    .brandbar {
+      width: min(540px, 92vw);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .brandbar .logo span { color: var(--accent); }
+    .brandbar .meta {
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    /* ---- The square carousel canvas ---- */
+    .frame {
+      position: relative;
+      width: min(540px, 92vw);
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+      background: var(--surface);
+    }
+    .track {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      transition: transform 0.5s cubic-bezier(0.65, 0, 0.18, 1);
+      will-change: transform;
+    }
+
+    .slide {
+      position: relative;
+      flex: 0 0 100%;
+      height: 100%;
+      padding: 44px 42px;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(600px 380px at 88% 6%, rgba(200,255,0,0.10), transparent 60%),
+        linear-gradient(180deg, #15151f 0%, #0d0d15 100%);
+    }
+    .slide::after {
+      content: "";
+      position: absolute;
+      left: 42px; bottom: 26px;
+      width: 38px; height: 4px; border-radius: 4px;
+      background: var(--accent);
+      opacity: 0.9;
+    }
+
+    .kicker {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .stepno {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(200,255,0,0.12);
+      border: 1px solid rgba(200,255,0,0.35);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .slide h2 {
+      font-size: clamp(26px, 6.4vw, 38px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      margin-bottom: 16px;
+    }
+    .slide h2 em { color: var(--accent); font-style: normal; }
+    .slide p {
+      font-size: clamp(15px, 3.9vw, 18px);
+      line-height: 1.6;
+      color: #d4d4e4;
+      max-width: 38ch;
+    }
+    .slide p + p { margin-top: 12px; }
+    .slide .spacer { flex: 1; }
+
+    ul.points { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 6px; }
+    ul.points li {
+      position: relative;
+      padding-left: 26px;
+      font-size: clamp(15px, 3.9vw, 18px);
+      line-height: 1.5;
+      color: #d4d4e4;
+    }
+    ul.points li::before {
+      content: "";
+      position: absolute; left: 0; top: 9px;
+      width: 9px; height: 9px; border-radius: 3px;
+      background: var(--accent);
+    }
+    ul.points li b { color: var(--text); font-weight: 700; }
+
+    .prompt {
+      margin-top: 18px;
+      background: #0c0c14;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-size: clamp(13px, 3.4vw, 15px);
+      line-height: 1.6;
+      color: #cfe3ff;
+    }
+
+    /* ---- Cover + CTA with photo ---- */
+    .slide.cover, .slide.cta { justify-content: flex-end; }
+    .slide.cover h2 { font-size: clamp(30px, 7.6vw, 46px); }
+
+    .portrait {
+      position: absolute;
+      top: 36px; right: 38px;
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+      background: var(--surface2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    /* fallback initials block shown if photo missing */
+    .portrait-fallback {
+      position: absolute;
+      top: 36px; right: 38px;
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 30px;
+      color: var(--ink);
+      background: var(--accent);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .portrait.missing { display: none; }
+    .portrait.missing + .portrait-fallback { display: flex; }
+
+    .byline {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 22px;
+      font-size: 14px; color: var(--muted); font-weight: 600;
+    }
+    .byline strong { color: var(--text); }
+
+    .pill {
+      display: inline-block;
+      margin-top: 22px;
+      background: var(--accent);
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      padding: 13px 22px;
+      border-radius: 12px;
+    }
+    .swipe-hint {
+      position: absolute;
+      bottom: 24px; right: 36px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .swipe-hint span { animation: nudge 1.4s ease-in-out infinite; }
+    @keyframes nudge { 0%,100%{transform:translateX(0);} 50%{transform:translateX(6px);} }
+
+    /* ---- Controls ---- */
+    .controls {
+      width: min(540px, 92vw);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .dots { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; flex: 1; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border); border: none; padding: 0; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .dot.active { background: var(--accent); width: 22px; border-radius: 5px; }
+    .nav {
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--surface2);
+      color: var(--text); font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+    }
+    .nav:hover { border-color: var(--accent); color: var(--accent); }
+    .nav:disabled { opacity: 0.3; cursor: default; }
+    .nav:disabled:hover { border-color: var(--border); color: var(--text); }
+
+    .footer-note {
+      font-size: 12px; color: var(--muted); text-align: center;
+    }
+    .footer-note a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="stage">
+
+    <div class="brandbar">
+      <div class="logo"><span>Savage</span> Social</div>
+      <div class="meta">Swipe → · 1/9</div>
+    </div>
+
+    <div class="frame">
+      <div class="track" id="track">
+
+        <!-- 1 · COVER -->
+        <section class="slide cover">
+          <img class="portrait" src="kate.jpg" alt="Kate, Savage Social"
+               onerror="this.classList.add('missing')" />
+          <div class="portrait-fallback">K</div>
+          <div class="spacer"></div>
+          <div class="kicker">Savage Social · AI Playbook</div>
+          <h2>A full week of <em>Instagram content</em> in 30 minutes</h2>
+          <p>No blank screen. No agency. Just Claude, a one-time brand brief, and a repeatable Sunday-night system.</p>
+          <div class="byline">By <strong>Kate</strong> · Savage Social, Arizona</div>
+          <div class="swipe-hint">Swipe <span>→</span></div>
+        </section>
+
+        <!-- 2 -->
+        <section class="slide">
+          <div class="kicker">Before you start</div>
+          <h2>Have three things written down</h2>
+          <ul class="points">
+            <li><b>What your business does</b> — in one plain sentence.</li>
+            <li><b>Who your ideal customer is</b> — be specific.</li>
+            <li><b>Three words</b> for your brand voice.</li>
+          </ul>
+          <div class="spacer"></div>
+          <p>Plus one free scheduler (Meta Business Suite works). No video gear, no design skills needed.</p>
+        </section>
+
+        <!-- 3 -->
+        <section class="slide">
+          <div class="stepno">1</div>
+          <h2>Start a Claude Project + write your brand brief</h2>
+          <p>Create a Project for your business. It stores your context permanently, so Claude remembers who you are every time — no re-explaining.</p>
+          <p>Drop your business, customer, voice, and #1 client result into the Project instructions.</p>
+        </section>
+
+        <!-- 4 -->
+        <section class="slide">
+          <div class="stepno">2</div>
+          <h2>Define your three content pillars</h2>
+          <ul class="points">
+            <li><b>Teach</b> — tips and how-tos that solve one real problem.</li>
+            <li><b>Show</b> — behind-the-scenes and real client results.</li>
+            <li><b>Sell</b> — what you offer and the after-state it creates.</li>
+          </ul>
+          <div class="spacer"></div>
+          <p>Three categories is all you need. Add them to your Project.</p>
+        </section>
+
+        <!-- 5 -->
+        <section class="slide">
+          <div class="stepno">3</div>
+          <h2>Prompt for your 7-post calendar</h2>
+          <p>Ask Claude for a week: 2 Teach, 2 Show, 2 Sell, 1 engagement post.</p>
+          <div class="prompt">"Using my brand brief and pillars, create a 7-post Instagram calendar. For each: the hook, the main point in 2–3 sentences, and a CTA."</div>
+        </section>
+
+        <!-- 6 -->
+        <section class="slide">
+          <div class="stepno">4</div>
+          <h2>Turn the calendar into full captions</h2>
+          <p>Convert each outline into a publishable caption, one at a time.</p>
+          <div class="prompt">"Write a full caption for Post 3 [outline]. My brand voice. Under 200 words. First line is the hook. End with [your CTA]."</div>
+          <div class="spacer"></div>
+          <p>Most drafts come back 80–90% usable on the first pass.</p>
+        </section>
+
+        <!-- 7 -->
+        <section class="slide">
+          <div class="stepno">5</div>
+          <h2>Edit for your voice — <em>this is where you win</em></h2>
+          <ul class="points">
+            <li>Read the hook out loud. Won't say it? Rewrite it.</li>
+            <li>Add one detail only you'd know — a name, a real number.</li>
+            <li>Make the CTA sound like you, not a template.</li>
+          </ul>
+          <div class="spacer"></div>
+          <p>65% of people now scroll past obvious AI. Two minutes per post fixes it.</p>
+        </section>
+
+        <!-- 8 -->
+        <section class="slide">
+          <div class="stepno">6</div>
+          <h2>Schedule it and walk away</h2>
+          <p>Paste all seven into Meta Business Suite, Later, or Buffer. Add your images, set the times, close the app.</p>
+          <p>Save the brief in your Project and next Sunday takes 20 minutes, not 30.</p>
+        </section>
+
+        <!-- 9 · CTA -->
+        <section class="slide cta">
+          <img class="portrait" src="kate.jpg" alt="Kate, Savage Social"
+               onerror="this.classList.add('missing')" />
+          <div class="portrait-fallback">K</div>
+          <div class="spacer"></div>
+          <div class="kicker">Your move</div>
+          <h2>Rather hand the whole system to us?</h2>
+          <p>Book a free 30-minute audit. We review your content, your consistency, and your conversion gaps — and tell you exactly what to fix. No pitch.</p>
+          <span class="pill">Book your free audit →</span>
+        </section>
+
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="nav" id="prev" aria-label="Previous slide">‹</button>
+      <div class="dots" id="dots"></div>
+      <button class="nav" id="next" aria-label="Next slide">›</button>
+    </div>
+
+    <div class="footer-note">
+      Save / screenshot each slide for Instagram · <a href="https://savagesocial.com">savagesocial.com</a>
+    </div>
+
+  </div>
+
+  <script>
+    const track = document.getElementById('track');
+    const slides = Array.from(track.children);
+    const dotsWrap = document.getElementById('dots');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const counter = document.querySelector('.brandbar .meta');
+    let i = 0;
+
+    slides.forEach((_, idx) => {
+      const d = document.createElement('button');
+      d.className = 'dot' + (idx === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+      d.addEventListener('click', () => go(idx));
+      dotsWrap.appendChild(d);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function go(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      track.style.transform = 'translateX(' + (-100 * i) + '%)';
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+      prev.disabled = i === 0;
+      next.disabled = i === slides.length - 1;
+      counter.textContent = (i === 0 ? 'Swipe → · ' : '') + (i + 1) + '/' + slides.length;
+    }
+
+    prev.addEventListener('click', () => go(i - 1));
+    next.addEventListener('click', () => go(i + 1));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') go(i + 1);
+      if (e.key === 'ArrowLeft') go(i - 1);
+    });
+
+    // touch / swipe
+    let x0 = null;
+    const frame = document.querySelector('.frame');
+    frame.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    frame.addEventListener('touchend', (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+
+    go(0);
+  </script>
+
+</body>
+</html>
