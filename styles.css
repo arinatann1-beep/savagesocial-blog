@@ -1,12 +1,12 @@
 :root {
-  --bg: #0a0a0f;
-  --surface: #111118;
-  --surface2: #1a1a24;
-  --border: #2a2a38;
-  --accent: #c8ff00;
-  --text: #f0f0f5;
-  --muted: #7a7a95;
-  --blue: #4d9fff;
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface2: #1a1a1a;
+  --border: #262626;
+  --accent: #ff6b1a;
+  --text: #ffffff;
+  --muted: #a8a29a;
+  --link: #ff8f4d;
   --max: 720px;
 }
 
@@ -38,7 +38,7 @@ nav {
 .nav-logo span { color: var(--accent); }
 .nav-cta {
   background: var(--accent);
-  color: #0a0a0f;
+  color: #0a0a0a;
   font-size: 12px;
   font-weight: 700;
   padding: 8px 16px;
@@ -162,7 +162,7 @@ nav {
 .article-body p {
   font-size: 16px;
   line-height: 1.8;
-  color: #c8c8dc;
+  color: #cfcac0;
   margin-bottom: 20px;
 }
 .article-body h2 {
@@ -184,12 +184,12 @@ nav {
 }
 .article-body li {
   font-size: 16px;
-  color: #c8c8dc;
+  color: #cfcac0;
   line-height: 1.75;
   margin-bottom: 6px;
 }
 .article-body strong { color: var(--text); font-weight: 600; }
-.article-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.article-body a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
 
 .step-block {
   counter-reset: steps;
@@ -238,14 +238,14 @@ nav {
 }
 
 .prompt-block {
-  background: #0d0d16;
+  background: #121212;
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   border-radius: 8px;
   padding: 16px 18px;
   font-family: 'Courier New', monospace;
   font-size: 13px;
-  color: #b8d4ff;
+  color: #e8c9b0;
   white-space: pre-wrap;
   margin: 14px 0;
   line-height: 1.7;
@@ -253,7 +253,7 @@ nav {
 
 .cta-box {
   background: var(--surface);
-  border: 1px solid rgba(200,255,0,0.25);
+  border: 1px solid rgba(255,107,26,0.25);
   border-radius: 12px;
   padding: 28px;
   margin: 48px 0 32px;
@@ -266,7 +266,7 @@ nav {
 .cta-btn {
   display: inline-block;
   background: var(--accent);
-  color: #0a0a0f;
+  color: #0a0a0a;
   font-size: 13px;
   font-weight: 700;
   padding: 10px 22px;
@@ -290,7 +290,7 @@ nav {
 }
 .sources ul { padding-left: 0; list-style: none; }
 .sources li { font-size: 13px; margin-bottom: 6px; }
-.sources a { color: var(--blue) !important; }
+.sources a { color: var(--link) !important; }
 
 /* LANDING PAGE */
 .lp-hero {
@@ -375,7 +375,7 @@ nav {
 .lp-section p {
   font-size: 16px;
   line-height: 1.8;
-  color: #c8c8dc;
+  color: #cfcac0;
   margin-bottom: 18px;
 }
 .lp-section p strong { color: var(--text); font-weight: 600; }
@@ -394,7 +394,7 @@ nav {
   padding-left: 26px;
   font-size: 15px;
   line-height: 1.7;
-  color: #c8c8dc;
+  color: #cfcac0;
   margin-bottom: 10px;
 }
 .check-list li::before {
@@ -498,7 +498,7 @@ nav {
   border-radius: 12px;
   padding: 22px;
 }
-.fit-card.yes { border-color: rgba(200,255,0,0.25); }
+.fit-card.yes { border-color: rgba(255,107,26,0.25); }
 .fit-card h3 {
   font-size: 15px;
   font-weight: 700;
@@ -508,7 +508,7 @@ nav {
 
 .price-card {
   background: var(--surface);
-  border: 1px solid rgba(200,255,0,0.3);
+  border: 1px solid rgba(255,107,26,0.3);
   border-radius: 14px;
   padding: 32px;
   margin-top: 24px;
@@ -543,8 +543,8 @@ nav {
   gap: 8px;
 }
 .tier-badge {
-  background: rgba(200,255,0,0.12);
-  border: 1px solid rgba(200,255,0,0.3);
+  background: rgba(255,107,26,0.12);
+  border: 1px solid rgba(255,107,26,0.3);
   color: var(--accent);
   border-radius: 999px;
   padding: 3px 9px;
