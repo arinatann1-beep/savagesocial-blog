@@ -4,29 +4,28 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Don's — 3 Red Flags Carousel (4:5)</title>
-<meta name="description" content="Instagram carousel for Don's Garage Doors: 3 red flags of a bad garage door company. 1080x1350 slides." />
+<meta name="description" content="Instagram carousel for Don's Garage Doors: 3 red flags of a bad garage door company. A1 brand colors. 1080x1350 slides." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --ink:#0D0D0D;
-    --paper:#F2F1ED;
-    --yellow:#FFC400;
-    --red:#E2362C;
-    --white:#ffffff;
-    --grey:#5b5b5b;
+    --navy:#0F1A2E;
+    --gold:#E8A33D;
+    --cream:#F5F1E8;
+    --muted-cream:#55606f;   /* muted text on cream */
+    --muted-navy:#97a3b7;    /* muted text on navy */
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  html,body{background:#15151c;font-family:'Inter',sans-serif;}
+  html,body{background:#0a1020;font-family:'Inter',sans-serif;}
 
   /* ---- page scaffolding (NOT part of the slide image) ---- */
   .page{padding:46px 20px 90px;display:flex;flex-direction:column;align-items:center;gap:56px;}
-  .intro{max-width:1080px;color:#cfcfe0;font-size:15px;line-height:1.6;text-align:center;}
+  .intro{max-width:1080px;color:#cdd6e4;font-size:15px;line-height:1.6;text-align:center;}
   .intro h1{color:#fff;font-size:20px;font-weight:800;margin-bottom:8px;font-family:'Archivo';}
-  .intro code{background:#262630;color:#ffd84d;padding:2px 7px;border-radius:5px;font-size:13px;}
+  .intro code{background:#1b2740;color:var(--gold);padding:2px 7px;border-radius:5px;font-size:13px;}
   .slide-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;}
-  .cap{color:#8f8fa6;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;}
+  .cap{color:#8794a8;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;}
 
   /* ---- the slide canvas: exactly 1080 x 1350 (Instagram 4:5) ---- */
   .slide{
@@ -35,125 +34,117 @@
     overflow:hidden;
     display:flex;flex-direction:column;
     padding:78px 84px 72px;
-    color:var(--ink);
   }
-  .s-paper{background:var(--paper);}
-  .s-yellow{background:var(--yellow);}
+  .s-cream{background:var(--cream);color:var(--navy);}
+  .s-navy {background:var(--navy); color:var(--cream);}
 
-  /* right / left edge accent bar */
-  .edgebar{position:absolute;top:0;bottom:0;width:26px;}
-  .s-paper  .edgebar{right:0;background:var(--yellow);}
-  .s-yellow .edgebar{left:0;background:var(--ink);}
+  /* gold edge accent bar */
+  .edgebar{position:absolute;top:0;bottom:0;width:26px;background:var(--gold);}
+  .s-cream .edgebar{right:0;}
+  .s-navy  .edgebar{left:0;}
 
   /* top handle bar */
-  .topbar{
-    text-align:center;font-weight:700;font-size:26px;letter-spacing:.09em;
-    color:#1b1b1b;text-transform:uppercase;
-  }
-  .s-yellow .topbar{color:#1b1b1b;}
+  .topbar{text-align:center;font-weight:700;font-size:26px;letter-spacing:.09em;text-transform:uppercase;}
+  .s-cream .topbar{color:#2b3647;}
+  .s-navy  .topbar{color:#c9d2e0;}
 
-  /* heading: skewed black banner + connecting rule (+ optional arrow) */
+  /* heading: skewed banner + connecting rule (+ optional arrow) */
   .head{display:flex;align-items:center;margin-top:30px;}
-  .arrow{font-size:66px;font-weight:800;line-height:1;margin-right:26px;color:var(--ink);font-family:'Archivo';}
-  .banner{
-    background:var(--ink);transform:skewX(-9deg);
-    padding:14px 36px;box-shadow:12px 12px 0 rgba(0,0,0,.12);
-    flex:0 0 auto;
-  }
-  .banner span{
-    display:block;transform:skewX(9deg);
-    color:#fff;font-family:'Archivo';font-weight:900;
-    font-size:84px;line-height:.98;letter-spacing:-.02em;white-space:nowrap;
-  }
-  .rule{flex:1;height:6px;background:var(--ink);margin-left:-6px;}
+  .arrow{font-size:66px;font-weight:800;line-height:1;margin-right:26px;font-family:'Archivo';}
+  .s-cream .arrow{color:var(--navy);}
+  .s-navy  .arrow{color:var(--gold);}
+  .banner{transform:skewX(-9deg);padding:14px 36px;box-shadow:12px 12px 0 rgba(0,0,0,.14);flex:0 0 auto;}
+  .banner span{display:block;transform:skewX(9deg);font-family:'Archivo';font-weight:900;font-size:84px;line-height:.98;letter-spacing:-.02em;white-space:nowrap;}
+  .s-cream .banner{background:var(--navy);}
+  .s-cream .banner span{color:var(--cream);}
+  .s-navy  .banner{background:var(--gold);}
+  .s-navy  .banner span{color:var(--navy);}
+  .rule{flex:1;height:6px;margin-left:-6px;}
+  .s-cream .rule{background:var(--navy);}
+  .s-navy  .rule{background:var(--gold);}
 
-  /* red-flag chip */
-  .chip{
-    display:inline-flex;align-items:center;gap:12px;
-    background:var(--red);color:#fff;font-family:'Archivo';font-weight:800;
-    font-size:30px;letter-spacing:.05em;text-transform:uppercase;
-    padding:11px 24px;border-radius:7px;
-  }
-  .chip.soft{background:var(--ink);}
+  /* flag chip — gold on every slide */
+  .chip{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:var(--navy);
+    font-family:'Archivo';font-weight:800;font-size:30px;letter-spacing:.05em;text-transform:uppercase;
+    padding:11px 24px;border-radius:7px;}
 
   /* bullet list */
   .points{margin-top:58px;display:flex;flex-direction:column;gap:42px;max-width:900px;}
   .point{display:grid;grid-template-columns:40px 1fr;gap:22px;align-items:start;}
-  .point .tri{color:var(--ink);font-size:30px;line-height:1.35;}
-  .point p{font-size:43px;line-height:1.26;font-weight:400;color:#171717;}
+  .point .tri{font-size:30px;line-height:1.35;}
+  .s-cream .point .tri{color:var(--navy);}
+  .s-navy  .point .tri{color:var(--gold);}
+  .point p{font-size:43px;line-height:1.26;font-weight:400;}
+  .s-cream .point p{color:#1b2535;}
+  .s-navy  .point p{color:var(--cream);}
   .point b{font-weight:800;}
-  .point .hl{background:var(--yellow);padding:0 6px;font-weight:800;}
-  .s-yellow .point .hl{background:var(--ink);color:#fff;}
+  .hl{background:var(--gold);color:var(--navy);padding:0 6px;font-weight:800;}
 
-  /* generic filler / spacer */
   .grow{flex:1;}
 
   /* bottom tag */
-  .tag{display:flex;align-items:center;gap:16px;font-weight:700;font-size:28px;color:#141414;}
-  .tag .dot{width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--yellow);
+  .tag{display:flex;align-items:center;gap:16px;font-weight:700;font-size:28px;}
+  .s-cream .tag{color:#17202e;}
+  .s-navy  .tag{color:var(--cream);}
+  .tag .dot{width:46px;height:46px;border-radius:50%;background:var(--gold);color:var(--navy);
     display:flex;align-items:center;justify-content:center;font-family:'Archivo';font-weight:900;font-size:24px;}
-  .tag small{display:block;font-size:19px;font-weight:600;color:var(--grey);letter-spacing:.04em;text-transform:uppercase;}
+  .tag small{display:block;font-size:19px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+  .s-cream .tag small{color:var(--muted-cream);}
+  .s-navy  .tag small{color:var(--muted-navy);}
 
   /* ===== COVER ===== */
-  .followcta{
-    margin-top:28px;display:inline-flex;align-items:center;gap:12px;align-self:flex-start;
-    background:var(--ink);color:#fff;font-weight:800;font-size:24px;letter-spacing:.03em;
-    padding:12px 22px;border-radius:8px;text-transform:uppercase;
-  }
-  .hook{
-    margin-top:40px;font-family:'Archivo';font-weight:900;text-transform:uppercase;
-    font-size:150px;line-height:.93;letter-spacing:-.035em;color:var(--ink);
-  }
-  .hook .red{color:var(--red);}
-  .hook .mark{background:var(--yellow);padding:0 10px;}
-  .subhook{margin-top:40px;font-size:40px;line-height:1.3;font-weight:500;color:#2a2a2a;max-width:820px;}
+  .followcta{margin-top:28px;display:inline-flex;align-items:center;gap:12px;align-self:flex-start;
+    background:var(--navy);color:var(--cream);font-weight:800;font-size:24px;letter-spacing:.03em;
+    padding:12px 22px;border-radius:8px;text-transform:uppercase;}
+  .hook{margin-top:40px;font-family:'Archivo';font-weight:900;text-transform:uppercase;
+    font-size:150px;line-height:.93;letter-spacing:-.035em;color:var(--navy);}
+  .hook .gold{color:var(--gold);}
+  .hook .mark{background:var(--navy);color:var(--cream);padding:0 10px;}
+  .subhook{margin-top:40px;font-size:40px;line-height:1.3;font-weight:500;color:#2a3545;max-width:820px;}
   .subhook b{font-weight:800;}
 
   /* ===== visual accent cards ===== */
   .visual{margin-top:20px;display:flex;justify-content:flex-end;}
-  .vcard{
-    background:var(--ink);color:#fff;border-radius:16px;padding:40px 46px;
-    transform:rotate(-4deg);box-shadow:18px 20px 0 rgba(0,0,0,.14);
-    text-align:center;max-width:620px;
-  }
-  .vcard .stars{font-size:70px;color:var(--yellow);letter-spacing:6px;line-height:1;}
-  .vcard .vlabel{margin-top:16px;font-size:26px;font-weight:600;color:#e7e7e7;letter-spacing:.02em;}
-  .vcard.light{background:#fff;color:var(--ink);box-shadow:18px 20px 0 rgba(0,0,0,.14);}
+  .vcard{border-radius:16px;padding:40px 46px;transform:rotate(-4deg);
+    box-shadow:18px 20px 0 rgba(0,0,0,.16);text-align:center;max-width:620px;}
+  .vcard.dark{background:var(--navy);color:var(--cream);}
+  .vcard.dark .stars{font-size:70px;color:var(--gold);letter-spacing:6px;line-height:1;}
+  .vcard.dark .vlabel{margin-top:16px;font-size:26px;font-weight:600;color:#dfe5ef;letter-spacing:.02em;}
+  .vcard.light{background:var(--cream);color:var(--navy);}
   .vcard.light .check{font-size:38px;font-weight:800;text-align:left;line-height:1.5;}
-  .vcard.light .check .ok{color:#1a9e4b;margin-right:14px;}
-  .stamp{
-    transform:rotate(-7deg);border:9px solid var(--red);color:var(--red);border-radius:18px;
+  .vcard.light .check .ok{color:var(--gold);margin-right:14px;}
+  .stamp{transform:rotate(-7deg);border:9px solid var(--navy);color:var(--navy);border-radius:18px;
     padding:28px 44px;font-family:'Archivo';font-weight:900;text-transform:uppercase;text-align:center;
-    background:rgba(255,255,255,.25);
-  }
+    background:rgba(255,255,255,.35);}
   .stamp .big{font-size:96px;line-height:.9;letter-spacing:-.02em;}
-  .stamp .sub{font-size:34px;letter-spacing:.04em;margin-top:8px;color:var(--ink);}
+  .stamp .sub{font-size:34px;letter-spacing:.04em;margin-top:8px;color:var(--navy);}
+  .stamp .sub b{color:var(--gold);}
 
-  /* ===== recap grid ===== */
+  /* ===== recap grid (navy slide) ===== */
   .recap{margin-top:70px;display:flex;flex-direction:column;gap:30px;max-width:900px;}
   .rcard{display:grid;grid-template-columns:96px 1fr;gap:28px;align-items:center;
-    background:var(--ink);border-radius:14px;padding:30px 34px;color:#fff;}
-  .rcard .n{font-family:'Archivo';font-weight:900;font-size:76px;line-height:1;color:var(--yellow);}
+    background:var(--cream);border-radius:14px;padding:30px 34px;color:var(--navy);}
+  .rcard .n{font-family:'Archivo';font-weight:900;font-size:76px;line-height:1;color:var(--gold);}
   .rcard h3{font-family:'Archivo';font-weight:800;font-size:46px;letter-spacing:-.01em;}
-  .rcard p{font-size:27px;font-weight:500;color:#d7d7d7;margin-top:4px;}
-  .recap-tag{margin-top:46px;font-size:40px;font-weight:700;line-height:1.3;max-width:900px;}
-  .recap-tag b{background:var(--ink);color:var(--yellow);padding:2px 10px;}
+  .rcard p{font-size:27px;font-weight:500;color:#45505f;margin-top:4px;}
+  .recap-tag{margin-top:46px;font-size:40px;font-weight:700;line-height:1.3;max-width:900px;color:var(--cream);}
+  .recap-tag b{background:var(--gold);color:var(--navy);padding:2px 10px;}
 
   /* ===== last slide ===== */
-  .end-top{margin-top:54px;font-size:48px;line-height:1.22;font-weight:600;max-width:880px;}
+  .end-top{margin-top:54px;font-size:48px;line-height:1.22;font-weight:600;max-width:880px;color:#1b2535;}
   .end-top b{font-weight:800;}
   .end-big{margin-top:30px;font-family:'Archivo';font-weight:900;text-transform:uppercase;
-    font-size:150px;line-height:.92;letter-spacing:-.035em;}
-  .end-big .red{color:var(--red);}
+    font-size:150px;line-height:.92;letter-spacing:-.035em;color:var(--navy);}
+  .end-big .gold{color:var(--gold);}
   .follow-mid{margin-top:40px;display:inline-flex;align-self:flex-start;align-items:center;gap:16px;
-    background:var(--ink);color:#fff;font-family:'Archivo';font-weight:800;font-size:40px;
+    background:var(--navy);color:var(--cream);font-family:'Archivo';font-weight:800;font-size:40px;
     padding:18px 32px;border-radius:12px;letter-spacing:.01em;}
-  .follow-mid .yel{color:var(--yellow);}
-  .end-cta{margin-top:40px;background:var(--red);color:#fff;border-radius:14px;padding:30px 36px;
+  .follow-mid .yel{color:var(--gold);}
+  .end-cta{margin-top:40px;background:var(--navy);color:var(--cream);border-radius:14px;padding:30px 36px;
     font-size:40px;font-weight:800;line-height:1.25;max-width:900px;}
-  .end-cta small{display:block;font-size:26px;font-weight:600;opacity:.92;margin-top:8px;}
+  .end-cta b{color:var(--gold);}
+  .end-cta small{display:block;font-size:26px;font-weight:600;color:#c9d2e0;margin-top:8px;}
 
-  /* print: one slide per page */
   @media print{
     html,body{background:#fff;}
     .page{padding:0;gap:0;}
@@ -166,32 +157,32 @@
 <div class="page">
 
   <div class="intro">
-    <h1>Don's — "3 Red Flags" carousel · 7 slides · 1080×1350 (IG 4:5)</h1>
-    <p>Screenshot or print each slide to PNG for Instagram. Replace the placeholders before posting:
-    handle <code>@DONSGARAGEDOORS</code>, the <code>DM "DOOR"</code> booking line, and (optional) swap the
-    accent cards on slides 3–5 for real photos (a Google-reviews screenshot, a clean van/tech shot).</p>
+    <h1>Don's — "3 Red Flags" carousel · 7 slides · 1080×1350 (IG 4:5) · A1 brand colors</h1>
+    <p>Navy <code>#0F1A2E</code> · Gold <code>#E8A33D</code> · Cream <code>#F5F1E8</code>.
+    Screenshot or print each slide to PNG for Instagram. Optional: swap the accent cards on slides 3–5 for real photos
+    (a Google-reviews screenshot, a clean van/tech shot). Confirm the <code>DM "DOOR"</code> booking line before posting.</p>
   </div>
 
   <!-- ============ SLIDE 1 — COVER ============ -->
   <div class="slide-wrap">
     <div class="cap">Slide 1 — Cover</div>
-    <div class="slide s-paper">
+    <div class="slide s-cream">
       <div class="edgebar"></div>
-      <div class="topbar">@DONSGARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
+      <div class="topbar">@DONS.GARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
       <div class="followcta">→&nbsp; FOLLOW FOR MORE</div>
-      <div class="hook">3 <span class="red">RED FLAGS</span> OF A <span class="mark">BAD</span> GARAGE DOOR CO.</div>
+      <div class="hook">3 <span class="gold">RED FLAGS</span> OF A <span class="mark">BAD</span> GARAGE DOOR CO.</div>
       <div class="subhook">Check these <b>before</b> you let anyone touch your door. 👇</div>
       <div class="grow"></div>
-      <div class="tag"><span class="dot">D</span><div>@donsgaragedoors<small>Tap follow · save this post</small></div></div>
+      <div class="tag"><span class="dot">D</span><div>@dons.garagedoors<small>Tap follow · save this post</small></div></div>
     </div>
   </div>
 
   <!-- ============ SLIDE 2 — 2ND HOOK / PAIN ============ -->
   <div class="slide-wrap">
     <div class="cap">Slide 2 — Pain / 2nd hook</div>
-    <div class="slide s-yellow">
+    <div class="slide s-navy">
       <div class="edgebar"></div>
-      <div class="topbar">@DONSGARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
+      <div class="topbar">@DONS.GARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
       <div class="head">
         <span class="arrow">→</span>
         <div class="banner"><span>Here's the catch</span></div>
@@ -203,16 +194,16 @@
         <div class="point"><span class="tri">▶</span><p>Before you let anyone touch your door, run this <b>3-point check</b></p></div>
       </div>
       <div class="grow"></div>
-      <div class="chip soft">💾 Save this before your next repair</div>
+      <div class="chip">💾 Save this before your next repair</div>
     </div>
   </div>
 
   <!-- ============ SLIDE 3 — RED FLAG 1: REVIEWS ============ -->
   <div class="slide-wrap">
     <div class="cap">Slide 3 — Red Flag #1: Reviews</div>
-    <div class="slide s-paper">
+    <div class="slide s-cream">
       <div class="edgebar"></div>
-      <div class="topbar">@DONSGARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
+      <div class="topbar">@DONS.GARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
       <div class="head">
         <span class="arrow">→</span>
         <div class="banner"><span>The Reviews</span></div>
@@ -226,7 +217,7 @@
       </div>
       <div class="grow"></div>
       <div class="visual">
-        <div class="vcard">
+        <div class="vcard dark">
           <div class="stars">★★★★★</div>
           <div class="vlabel">A real pro lets the reviews do the talking</div>
         </div>
@@ -237,9 +228,9 @@
   <!-- ============ SLIDE 4 — RED FLAG 2: APPEARANCE ============ -->
   <div class="slide-wrap">
     <div class="cap">Slide 4 — Red Flag #2: Appearance</div>
-    <div class="slide s-yellow">
+    <div class="slide s-navy">
       <div class="edgebar"></div>
-      <div class="topbar">@DONSGARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
+      <div class="topbar">@DONS.GARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
       <div class="head">
         <span class="arrow">→</span>
         <div class="banner"><span>The Appearance</span></div>
@@ -265,9 +256,9 @@
   <!-- ============ SLIDE 5 — RED FLAG 3: AVAILABILITY ============ -->
   <div class="slide-wrap">
     <div class="cap">Slide 5 — Red Flag #3: Availability &amp; options</div>
-    <div class="slide s-paper">
+    <div class="slide s-cream">
       <div class="edgebar"></div>
-      <div class="topbar">@DONSGARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
+      <div class="topbar">@DONS.GARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
       <div class="head">
         <span class="arrow">→</span>
         <div class="banner"><span>Availability</span></div>
@@ -283,7 +274,7 @@
       <div class="visual">
         <div class="stamp">
           <div class="big">Same Day</div>
-          <div class="sub">90% of repairs · done today</div>
+          <div class="sub"><b>90%</b> of repairs · done today</div>
         </div>
       </div>
     </div>
@@ -292,9 +283,9 @@
   <!-- ============ SLIDE 6 — RECAP ============ -->
   <div class="slide-wrap">
     <div class="cap">Slide 6 — Recap</div>
-    <div class="slide s-yellow">
+    <div class="slide s-navy">
       <div class="edgebar"></div>
-      <div class="topbar">@DONSGARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
+      <div class="topbar">@DONS.GARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
       <div class="head">
         <span class="arrow">→</span>
         <div class="banner"><span>The 3-Point Check</span></div>
@@ -307,24 +298,24 @@
       </div>
       <div class="grow"></div>
       <div class="recap-tag">Get all three, and you get the service you <b>actually deserve.</b></div>
-      <div style="margin-top:46px;"><span class="chip soft">👉 Swipe for who checks all 3</span></div>
+      <div style="margin-top:46px;"><span class="chip">👉 Swipe for who checks all 3</span></div>
     </div>
   </div>
 
   <!-- ============ SLIDE 7 — CTA / LAST ============ -->
   <div class="slide-wrap">
     <div class="cap">Slide 7 — CTA</div>
-    <div class="slide s-paper">
+    <div class="slide s-cream">
       <div class="edgebar"></div>
-      <div class="topbar">@DONSGARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
+      <div class="topbar">@DONS.GARAGEDOORS&nbsp;&nbsp;|&nbsp;&nbsp;GARAGE DOOR REPAIR</div>
       <div class="end-top">Want a garage door company that checks <b>all three boxes?</b></div>
-      <div class="end-big">That's <span class="red">Don's.</span></div>
-      <div class="follow-mid">+ Follow <span class="yel">@donsgaragedoors</span></div>
+      <div class="end-big">That's <span class="gold">Don's.</span></div>
+      <div class="follow-mid">+ Follow <span class="yel">@dons.garagedoors</span></div>
       <div class="grow"></div>
       <div class="end-cta">📞 Call or DM <b>"DOOR"</b> to book your repair
         <small>Reviews you can trust · techs who show up right · same-day service</small>
       </div>
-      <div style="margin-top:34px;" class="tag"><span class="dot">D</span><div>@donsgaragedoors<small>Save &amp; share with someone who needs it</small></div></div>
+      <div style="margin-top:34px;" class="tag"><span class="dot">D</span><div>@dons.garagedoors<small>Save &amp; share with someone who needs it</small></div></div>
     </div>
   </div>
 
