@@ -1,7 +1,7 @@
 # Garage Door Doctor — "Do's & Don'ts" carousel
 
 Instagram carousel, **7 slides**, **1080×1350 (4:5)**. Cheatsheet layout
-(skewed banners, do/don't chips) in **A1 brand colors**: Navy `#0F1A2E` · Gold `#E8A33D` · Cream `#F5F1E8`.
+(skewed banners, do/don't chips) in **Garage Door Doctor brand colors** (from houstongaragedoordoctor.com): Navy `#0E2540` · Orange `#F15D22` · Blue `#00AAE7`.
 
 - `index.html` — the slides. Screenshot or print each `.slide` to PNG (1080×1350).
 - `export/slide-1.png` … `slide-7.png` — pre-rendered PNGs, ready to post.

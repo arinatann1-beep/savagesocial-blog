@@ -10,12 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --navy:#0F1A2E;
-    --gold:#E8A33D;
-    --cream:#F5F1E8;
+    --navy:#0E2540;     /* GDD navy */
+    --gold:#F15D22;     /* GDD orange (primary accent) */
+    --blue:#00AAE7;     /* GDD light-blue (secondary) */
+    --cream:#F6F8FB;    /* near-white light surface */
     --red:#C73A2F;
-    --muted-cream:#55606f;
-    --muted-navy:#97a3b7;
+    --muted-cream:#5a6675;
+    --muted-navy:#9fb0c6;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html,body{background:#0a1020;font-family:'Inter',sans-serif;}
@@ -56,8 +57,9 @@
   .chip{display:inline-flex;align-items:center;gap:12px;font-family:'Archivo';font-weight:800;
     font-size:30px;letter-spacing:.05em;text-transform:uppercase;padding:11px 24px;border-radius:7px;
     background:var(--gold);color:var(--navy);}
-  .chip.do{background:var(--gold);color:var(--navy);}
-  .chip.dont{background:var(--red);color:#fff;}
+  .chip.do{background:var(--gold);color:#fff;}
+  .chip.dont{background:var(--navy);color:#fff;border:3px solid var(--blue);}
+  .s-navy .chip.dont{background:#17324f;}
 
   .points{margin-top:58px;display:flex;flex-direction:column;gap:42px;max-width:900px;}
   .point{display:grid;grid-template-columns:40px 1fr;gap:22px;align-items:start;}
@@ -149,7 +151,7 @@
 
   <div class="intro">
     <h1>Garage Door Doctor — "Do's & Don'ts" carousel · 7 slides · 1080×1350 (IG 4:5) · A1 brand colors</h1>
-    <p>Navy <code>#0F1A2E</code> · Gold <code>#E8A33D</code> · Cream <code>#F5F1E8</code>.
+    <p>GDD brand: Navy <code>#0E2540</code> · Orange <code>#F15D22</code> · Blue <code>#00AAE7</code>.
     Screenshot or print each slide to PNG for Instagram. Confirm the <code>DM "FIX"</code> booking line before posting,
     and drop a real crew photo into the frame on the last slide.</p>
   </div>
