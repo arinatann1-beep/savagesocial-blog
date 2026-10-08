@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welborn Garage — Garage Door Checklist Carousel (4:5)</title>
+<meta name="description" content="Instagram carousel for Welborn Garage (Dallas): 5 things to do for your garage door. Brand colors + real photos. 1080x1350 slides." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#1C3557;   /* Welborn navy */
+    --red:#C62038;    /* Welborn red (primary accent) */
+    --cream:#F5F7FA;  /* near-white light surface */
+    --muted-cream:#5a6675;
+    --muted-navy:#aab6c9;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:#0d1b30;font-family:'Inter',sans-serif;}
+
+  .page{padding:46px 20px 90px;display:flex;flex-direction:column;align-items:center;gap:56px;}
+  .intro{max-width:1080px;color:#cdd6e4;font-size:15px;line-height:1.6;text-align:center;}
+  .intro h1{color:#fff;font-size:20px;font-weight:800;margin-bottom:8px;font-family:'Archivo';}
+  .intro code{background:#1b2740;color:#ff8d7a;padding:2px 7px;border-radius:5px;font-size:13px;}
+  .slide-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .cap{color:#8794a8;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;}
+
+  .slide{position:relative;width:1080px;height:1350px;overflow:hidden;display:flex;flex-direction:column;padding:78px 84px 72px;}
+  .s-cream{background:var(--cream);color:var(--navy);}
+  .s-navy {background:var(--navy); color:#fff;}
+
+  .edgebar{position:absolute;top:0;bottom:0;width:26px;background:var(--red);}
+  .s-cream .edgebar{right:0;}
+  .s-navy  .edgebar{left:0;}
+
+  .topbar{text-align:center;font-weight:700;font-size:26px;letter-spacing:.09em;text-transform:uppercase;}
+  .s-cream .topbar{color:#2b3647;}
+  .s-navy  .topbar{color:#c9d2e0;}
+
+  .head{display:flex;align-items:center;margin-top:30px;}
+  .arrow{font-size:66px;font-weight:800;line-height:1;margin-right:26px;font-family:'Archivo';}
+  .s-cream .arrow{color:var(--navy);}
+  .s-navy  .arrow{color:var(--red);}
+  .banner{transform:skewX(-9deg);padding:14px 36px;box-shadow:12px 12px 0 rgba(0,0,0,.18);flex:0 0 auto;}
+  .banner span{display:block;transform:skewX(9deg);font-family:'Archivo';font-weight:900;font-size:80px;line-height:.98;letter-spacing:-.02em;white-space:nowrap;color:#fff;}
+  .s-cream .banner{background:var(--navy);}
+  .s-navy  .banner{background:var(--red);}
+  .rule{flex:1;height:6px;margin-left:-6px;}
+  .s-cream .rule{background:var(--navy);}
+  .s-navy  .rule{background:var(--red);}
+
+  .chip{display:inline-flex;align-items:center;gap:12px;font-family:'Archivo';font-weight:800;
+    font-size:30px;letter-spacing:.05em;text-transform:uppercase;padding:11px 24px;border-radius:7px;
+    background:var(--red);color:#fff;}
+
+  .ddgroup{margin-top:24px;display:flex;flex-direction:column;gap:40px;max-width:912px;}
+  .dditem{display:flex;flex-direction:column;gap:16px;}
+  .ddtext{font-size:41px;line-height:1.24;font-weight:400;}
+  .s-cream .ddtext{color:#1b2535;}
+  .s-navy  .ddtext{color:#eef2f8;}
+  .ddtext b{font-weight:800;}
+  .hl{background:var(--red);color:#fff;padding:0 6px;font-weight:800;}
+
+  .grow{flex:1;}
+
+  .tag{display:flex;align-items:center;gap:16px;font-weight:700;font-size:28px;}
+  .s-cream .tag{color:#17202e;}
+  .s-navy  .tag{color:#fff;}
+  .tag img{height:58px;width:auto;display:block;}
+  .tag small{display:block;font-size:19px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+  .s-cream .tag small{color:var(--muted-cream);}
+  .s-navy  .tag small{color:var(--muted-navy);}
+
+  /* cover */
+  .coverlogo{height:120px;width:auto;align-self:flex-start;margin-top:8px;}
+  .followcta{margin-top:24px;display:inline-flex;align-items:center;gap:12px;align-self:flex-start;
+    background:var(--red);color:#fff;font-weight:800;font-size:24px;letter-spacing:.03em;
+    padding:12px 22px;border-radius:8px;text-transform:uppercase;}
+  .hook{margin-top:34px;font-family:'Archivo';font-weight:900;text-transform:uppercase;
+    font-size:132px;line-height:.95;letter-spacing:-.035em;color:#fff;}
+  .hook .red{color:#ff6a56;}
+  .subhook{margin-top:36px;font-size:40px;line-height:1.3;font-weight:500;color:#cdd8e8;max-width:860px;}
+  .subhook b{font-weight:800;color:#fff;}
+
+  /* proof slide */
+  .badges{margin-top:24px;display:flex;gap:48px;justify-content:center;align-items:center;}
+  .badges img{height:420px;width:auto;}
+  .proofstat{margin-top:20px;text-align:center;}
+  .proofstat .big{font-family:'Archivo';font-weight:900;font-size:120px;line-height:1;color:var(--navy);}
+  .proofstat .big .star{color:#F5A623;}
+  .proofstat .sub{font-size:34px;font-weight:700;color:#3a4654;margin-top:6px;letter-spacing:.01em;}
+
+  /* cta slide */
+  .ctahead{font-family:'Archivo';font-weight:900;text-transform:uppercase;font-size:120px;line-height:.92;letter-spacing:-.035em;color:#fff;margin-top:20px;}
+  .ctahead .red{color:#ff6a56;}
+  .vanwrap{margin-top:18px;display:flex;justify-content:center;}
+  .vanwrap img{width:860px;max-width:100%;height:auto;display:block;}
+  .phone{margin-top:8px;display:flex;flex-direction:column;align-items:flex-start;gap:18px;}
+  .phonebtn{background:var(--red);color:#fff;padding:20px 40px;border-radius:14px;
+    display:inline-flex;flex-direction:column;align-items:flex-start;gap:6px;}
+  .phonebtn .num{font-family:'Archivo';font-weight:900;font-size:60px;letter-spacing:-.01em;white-space:nowrap;}
+  .phonebtn small{font-family:'Inter';font-weight:700;font-size:22px;letter-spacing:.12em;opacity:.92;}
+  .ctafoot{font-size:30px;font-weight:700;color:#cdd8e8;}
+  .ctafoot b{color:#fff;}
+
+  @media print{html,body{background:#fff;}.page{padding:0;gap:0;}.intro,.cap{display:none;}.slide{page-break-after:always;box-shadow:none;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="intro">
+    <h1>Welborn Garage — "Garage Door Checklist" · 8 slides · 1080×1350 (IG 4:5)</h1>
+    <p>Welborn brand (from callwelborngarage.com): Navy <code>#1C3557</code> · Red <code>#C62038</code> · White.
+    Real photos used: the shield logo, 2024 award badges, and the branded van. Confirm the handle <code>@welborn_garage</code>
+    and phone before posting.</p>
+  </div>
+
+  <!-- SLIDE 1 — COVER -->
+  <div class="slide-wrap">
+    <div class="cap">Slide 1 — Cover</div>
+    <div class="slide s-navy">
+      <div class="edgebar"></div>
+      <div class="topbar">@WELBORN_GARAGE&nbsp;&nbsp;|&nbsp;&nbsp;DALLAS, TX</div>
+      <img class="coverlogo" src="assets/logo.png" alt="Welborn Garage" />
+      <div class="hook">5 things to do for your <span class="red">garage door</span></div>
+      <div class="subhook">2 minutes a month = no surprise <b>$400 repair.</b> 👇</div>
+      <div class="grow"></div>
+      <div class="followcta">→&nbsp; FOLLOW @WELBORN_GARAGE</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 — DO 1 -->
+  <div class="slide-wrap">
+    <div class="cap">Slide 2 — Do #1 Look & Listen</div>
+    <div class="slide s-cream">
+      <div class="edgebar"></div>
+      <div class="topbar">@WELBORN_GARAGE&nbsp;&nbsp;|&nbsp;&nbsp;DALLAS, TX</div>
+      <div class="head"><span class="arrow">→</span><div class="banner"><span>Look &amp; Listen</span></div><div class="rule"></div></div>
+      <div class="grow"></div>
+      <div class="ddgroup"><div class="dditem"><span class="chip">✅ DO #1</span>
+        <div class="ddtext">Once a month, watch it open. <span class="hl">Grinding, popping or jerking</span> is your early warning — far cheaper to fix now than later.</div></div></div>
+      <div class="grow"></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — DO 2 (WD-40) -->
+  <div class="slide-wrap">
+    <div class="cap">Slide 3 — Do #2 Lube It Right</div>
+    <div class="slide s-navy">
+      <div class="edgebar"></div>
+      <div class="topbar">@WELBORN_GARAGE&nbsp;&nbsp;|&nbsp;&nbsp;DALLAS, TX</div>
+      <div class="head"><span class="arrow">→</span><div class="banner"><span>Lube It Right</span></div><div class="rule"></div></div>
+      <div class="grow"></div>
+      <div class="ddgroup"><div class="dditem"><span class="chip">✅ DO #2</span>
+        <div class="ddtext">Hit the rollers, hinges &amp; springs with <span class="hl">silicone or white-lithium</span> spray. Skip the <b>WD-40</b> — it's a degreaser, not a lubricant.</div></div></div>
+      <div class="grow"></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 — DO 3 -->
+  <div class="slide-wrap">
+    <div class="cap">Slide 4 — Do #3 The Tracks</div>
+    <div class="slide s-cream">
+      <div class="edgebar"></div>
+      <div class="topbar">@WELBORN_GARAGE&nbsp;&nbsp;|&nbsp;&nbsp;DALLAS, TX</div>
+      <div class="head"><span class="arrow">→</span><div class="banner"><span>The Tracks</span></div><div class="rule"></div></div>
+      <div class="grow"></div>
+      <div class="ddgroup"><div class="dditem"><span class="chip">✅ DO #3</span>
+        <div class="ddtext"><span class="hl">Wipe them clean</span> with a rag — don't grease them. Grease catches dust and gums up the whole door.</div></div></div>
+      <div class="grow"></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 — DO 4 -->
+  <div class="slide-wrap">
+    <div class="cap">Slide 5 — Do #4 Test The Balance</div>
+    <div class="slide s-navy">
+      <div class="edgebar"></div>
+      <div class="topbar">@WELBORN_GARAGE&nbsp;&nbsp;|&nbsp;&nbsp;DALLAS, TX</div>
+      <div class="head"><span class="arrow">→</span><div class="banner"><span>Test The Balance</span></div><div class="rule"></div></div>
+      <div class="grow"></div>
+      <div class="ddgroup"><div class="dditem"><span class="chip">✅ DO #4</span>
+        <div class="ddtext">Pull the release and lift the door halfway. A healthy door <span class="hl">stays put</span> — if it drops, your springs need a pro.</div></div></div>
+      <div class="grow"></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 — DO 5 -->
+  <div class="slide-wrap">
+    <div class="cap">Slide 6 — Do #5 Safety Reverse</div>
+    <div class="slide s-cream">
+      <div class="edgebar"></div>
+      <div class="topbar">@WELBORN_GARAGE&nbsp;&nbsp;|&nbsp;&nbsp;DALLAS, TX</div>
+      <div class="head"><span class="arrow">→</span><div class="banner"><span>Safety Reverse</span></div><div class="rule"></div></div>
+      <div class="grow"></div>
+      <div class="ddgroup"><div class="dditem"><span class="chip">✅ DO #5</span>
+        <div class="ddtext">Wave a broom under the closing door — it should <span class="hl">reverse instantly</span>. If it doesn't, stop using it and call us.</div></div></div>
+      <div class="grow"></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 — SOCIAL PROOF -->
+  <div class="slide-wrap">
+    <div class="cap">Slide 7 — Proof</div>
+    <div class="slide s-navy">
+      <div class="edgebar"></div>
+      <div class="topbar">@WELBORN_GARAGE&nbsp;&nbsp;|&nbsp;&nbsp;DALLAS, TX</div>
+      <div class="head"><span class="arrow">→</span><div class="banner"><span>Dallas Trusts Us</span></div><div class="rule"></div></div>
+      <div class="grow"></div>
+      <div class="badges">
+        <img src="assets/badge_dfwfav.png" alt="2024 DFW Favorites — Gold Winner" />
+        <img src="assets/badge_bestdfw.png" alt="Best in DFW 2024 — Gold" />
+      </div>
+      <div class="proofstat">
+        <div class="big" style="color:#fff;">4.9<span class="star">★</span></div>
+        <div class="sub" style="color:#cdd8e8;">7,000+ Google reviews · Award-winning · Same-day service</div>
+      </div>
+      <div class="grow"></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 — CTA -->
+  <div class="slide-wrap">
+    <div class="cap">Slide 8 — CTA</div>
+    <div class="slide s-navy">
+      <div class="edgebar"></div>
+      <div class="topbar">@WELBORN_GARAGE&nbsp;&nbsp;|&nbsp;&nbsp;DALLAS, TX</div>
+      <div class="ctahead">Need a pro? <span class="red">Call Welborn.</span></div>
+      <div class="vanwrap"><img src="assets/van.png" alt="Welborn Garage service van" /></div>
+      <div class="grow"></div>
+      <div class="phone">
+        <div class="phonebtn"><span class="num">📞 (214) 865-7512</span><small>SAME-DAY SERVICE · 7 DAYS A WEEK</small></div>
+        <div class="ctafoot">Or DM <b>"DOOR"</b> to book online · <b>@welborn_garage</b></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
